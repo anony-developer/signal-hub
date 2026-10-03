@@ -1,0 +1,2090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <title>Signal Hub · Live Betting Signals</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :root {
+      --bg: #f5f6fb;
+      --surface: #ffffff;
+      --surface-alt: #f0f1f8;
+      --surface-hover: #e8eaf5;
+      --text-primary: #14142a;
+      --text-secondary: #5f6080;
+      --border: #dfe1ed;
+      --primary: #5b4bdb;
+      --primary-hover: #4a3ac8;
+      --primary-glow: rgba(91,75,219,0.3);
+      --success: #00a870;
+      --success-glow: rgba(0,168,112,0.25);
+      --danger: #e0355c;
+      --danger-glow: rgba(224,53,92,0.25);
+      --warning: #d99e00;
+      --warning-glow: rgba(217,158,0,0.25);
+      --info: #2b8ce0;
+      --shadow-sm: 0 1px 3px rgba(20,20,42,0.06);
+      --shadow: 0 6px 20px rgba(20,20,42,0.08);
+      --shadow-lg: 0 16px 50px rgba(20,20,42,0.15);
+      --card-radius: 24px;
+      --input-radius: 14px;
+      --transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+      --modal-bg: rgba(20,20,42,0.4);
+      --toast-text: #ffffff;
+    }
+
+    body.dark {
+      --bg: #0a0a14;
+      --surface: #14142a;
+      --surface-alt: #1c1c36;
+      --surface-hover: #22224a;
+      --text-primary: #eaeaf5;
+      --text-secondary: #8888b0;
+      --border: #28284a;
+      --primary: #7c5cff;
+      --primary-hover: #6a48e8;
+      --primary-glow: rgba(124,92,255,0.4);
+      --success: #00d68f;
+      --success-glow: rgba(0,214,143,0.35);
+      --danger: #ff5c7c;
+      --danger-glow: rgba(255,92,124,0.35);
+      --warning: #ffb84d;
+      --warning-glow: rgba(255,184,77,0.35);
+      --info: #4dabff;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
+      --shadow: 0 6px 20px rgba(0,0,0,0.5);
+      --shadow-lg: 0 16px 50px rgba(0,0,0,0.7);
+      --modal-bg: rgba(5,5,15,0.85);
+    }
+
+    html, body {
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 12px;
+      background-image:
+        radial-gradient(ellipse 80% 60% at 20% 0%, var(--primary-glow) 0%, transparent 60%),
+        radial-gradient(ellipse 70% 50% at 90% 100%, var(--success-glow) 0%, transparent 60%);
+      background-attachment: fixed;
+      -webkit-text-size-adjust: 100%;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    body:not(.dark) {
+      background-image:
+        radial-gradient(ellipse 80% 60% at 20% 0%, rgba(91,75,219,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 70% 50% at 90% 100%, rgba(0,168,112,0.06) 0%, transparent 60%);
+    }
+
+    .app-container {
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    /* ============ TOP BAR ============ */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0 22px;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-primary);
+    }
+
+    .logo-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary), var(--success));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 18px;
+      box-shadow: 0 6px 18px var(--primary-glow);
+      flex-shrink: 0;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .logo-text .brand {
+      font-size: 20px;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--primary), var(--success));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .logo-text .tagline {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .top-bar-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .sync-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 6px 12px;
+      border-radius: 100px;
+      background: rgba(0,168,112,0.12);
+      color: var(--success);
+      border: 1px solid rgba(0,168,112,0.3);
+    }
+
+    .sync-badge i {
+      font-size: 8px;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    .sync-badge.offline {
+      background: rgba(224,53,92,0.12);
+      color: var(--danger);
+      border-color: rgba(224,53,92,0.3);
+    }
+
+    .sync-badge.offline i {
+      animation: none;
+    }
+
+    /* ============ THEME TOGGLE ============ */
+    .theme-toggle-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 40px;
+      width: 46px;
+      height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+      color: var(--text-secondary);
+      font-size: 17px;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .theme-toggle-btn:hover,
+    .theme-toggle-btn:active {
+      background: var(--surface-hover);
+      color: var(--primary);
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px var(--primary-glow);
+    }
+
+    .theme-toggle-btn .theme-icon-sun,
+    .theme-toggle-btn .theme-icon-moon {
+      position: absolute;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s;
+    }
+
+    .theme-toggle-btn .theme-icon-sun {
+      transform: rotate(0deg) scale(1);
+      opacity: 1;
+      color: var(--warning);
+    }
+
+    .theme-toggle-btn .theme-icon-moon {
+      transform: rotate(-90deg) scale(0);
+      opacity: 0;
+    }
+
+    body.dark .theme-toggle-btn .theme-icon-sun {
+      transform: rotate(90deg) scale(0);
+      opacity: 0;
+    }
+
+    body.dark .theme-toggle-btn .theme-icon-moon {
+      transform: rotate(0deg) scale(1);
+      opacity: 1;
+      color: var(--primary);
+    }
+
+    /* ============ ADMIN ENTRY ============ */
+    .admin-entry-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 40px;
+      width: 46px;
+      height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+      color: var(--text-secondary);
+      font-size: 15px;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      opacity: 0.85;
+    }
+
+    .admin-entry-btn:hover,
+    .admin-entry-btn:active {
+      background: var(--surface-hover);
+      color: var(--primary);
+      border-color: var(--primary);
+      opacity: 1;
+      transform: translateY(-2px);
+    }
+
+    .admin-entry-btn .dot {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--primary);
+      opacity: 0.5;
+    }
+
+    /* ============ PUBLIC HEADER ============ */
+    .public-header {
+      text-align: center;
+      margin-bottom: 26px;
+      padding: 8px 0;
+    }
+
+    .public-header .live-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0,168,112,0.1);
+      border: 1px solid rgba(0,168,112,0.3);
+      color: var(--success);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 7px 16px;
+      border-radius: 100px;
+      margin-bottom: 18px;
+    }
+
+    body.dark .public-header .live-pill {
+      background: rgba(0,214,143,0.12);
+      border: 1px solid rgba(0,214,143,0.35);
+    }
+
+    .public-header .live-pill .live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--success);
+      animation: pulse 1.4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.3); }
+    }
+
+    .public-header h1 {
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: -1.2px;
+      line-height: 1.1;
+      background: linear-gradient(135deg, var(--primary), var(--success), var(--warning));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 10px;
+    }
+
+    .public-header p {
+      color: var(--text-secondary);
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.6;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* ============ SIGNAL CARDS ============ */
+    .section-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .section-head h2 {
+      font-size: 17px;
+      font-weight: 900;
+      letter-spacing: -0.3px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-head h2 i {
+      color: var(--primary);
+      font-size: 16px;
+    }
+
+    .signal-count {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      border-radius: 100px;
+    }
+
+    .signal-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-bottom: 26px;
+    }
+
+    .signal-card {
+      background: var(--surface);
+      border-radius: 22px;
+      padding: 0;
+      border: 1px solid var(--border);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .signal-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .signal-card-header {
+      padding: 18px 20px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(135deg, var(--surface-alt), transparent);
+      flex-wrap: wrap;
+    }
+
+    .signal-card-header .tag {
+      font-size: 10px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      padding: 6px 14px;
+      border-radius: 100px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .signal-card.win .tag {
+      background: rgba(0,168,112,0.12);
+      color: var(--success);
+      border: 1px solid rgba(0,168,112,0.3);
+    }
+    .signal-card.lose .tag {
+      background: rgba(224,53,92,0.12);
+      color: var(--danger);
+      border: 1px solid rgba(224,53,92,0.3);
+    }
+    .signal-card.random .tag {
+      background: rgba(217,158,0,0.12);
+      color: var(--warning);
+      border: 1px solid rgba(217,158,0,0.3);
+    }
+
+    body.dark .signal-card.win .tag {
+      background: rgba(0,214,143,0.15);
+      border: 1px solid rgba(0,214,143,0.35);
+    }
+    body.dark .signal-card.lose .tag {
+      background: rgba(255,92,124,0.15);
+      border: 1px solid rgba(255,92,124,0.35);
+    }
+    body.dark .signal-card.random .tag {
+      background: rgba(255,184,77,0.15);
+      border: 1px solid rgba(255,184,77,0.35);
+    }
+
+    .signal-card-header .date-badge {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--text-secondary);
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      padding: 6px 12px;
+      border-radius: 100px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      letter-spacing: 0.3px;
+    }
+
+    .signal-card-header .date-badge i {
+      font-size: 11px;
+      color: var(--primary);
+    }
+
+    .signal-card-body {
+      padding: 18px 20px;
+    }
+
+    .signal-card-body .signal-name {
+      font-size: 19px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      color: var(--text-primary);
+      margin-bottom: 14px;
+      word-break: break-word;
+    }
+
+    .signal-data-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .data-item {
+      background: var(--surface-alt);
+      border-radius: 14px;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      transition: var(--transition);
+    }
+
+    .data-item:hover {
+      border-color: var(--primary);
+      background: var(--surface-hover);
+    }
+
+    .data-item .data-label {
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .data-item .data-label i {
+      font-size: 11px;
+      color: var(--primary);
+    }
+
+    .data-item .data-value {
+      font-size: 15px;
+      font-weight: 900;
+      color: var(--text-primary);
+      letter-spacing: -0.3px;
+      word-break: break-word;
+    }
+
+    .data-item .data-value.amount { color: var(--success); }
+    .data-item .data-value.multiplier { color: var(--warning); }
+    .data-item .data-value.time { color: var(--info); }
+
+    .signal-note {
+      background: rgba(217,158,0,0.08);
+      border: 1px solid rgba(217,158,0,0.3);
+      border-radius: 14px;
+      padding: 13px 15px;
+      display: flex;
+      gap: 11px;
+      align-items: flex-start;
+    }
+
+    body.dark .signal-note {
+      background: linear-gradient(135deg, rgba(255,184,77,0.1), rgba(255,184,77,0.03));
+      border: 1px solid rgba(255,184,77,0.3);
+    }
+
+    .signal-note i {
+      color: var(--warning);
+      font-size: 15px;
+      margin-top: 1px;
+      flex-shrink: 0;
+    }
+
+    .signal-note .note-text {
+      font-size: 13px;
+      color: var(--text-primary);
+      font-weight: 500;
+      line-height: 1.5;
+      word-break: break-word;
+    }
+
+    .signal-note .note-label {
+      font-size: 10px;
+      font-weight: 900;
+      color: var(--warning);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 3px;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 50px 24px;
+      background: var(--surface);
+      border-radius: 22px;
+      border: 1px dashed var(--border);
+      color: var(--text-secondary);
+    }
+
+    .empty-state i {
+      font-size: 40px;
+      display: block;
+      margin-bottom: 14px;
+      opacity: 0.4;
+      color: var(--primary);
+    }
+
+    .empty-state p {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .loading-state {
+      text-align: center;
+      padding: 60px 24px;
+      color: var(--text-secondary);
+    }
+
+    .loading-state i {
+      font-size: 32px;
+      display: block;
+      margin-bottom: 14px;
+      color: var(--primary);
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .loading-state p {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    /* ============ MODAL ============ */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: var(--modal-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 12px;
+      overflow-y: auto;
+    }
+
+    .modal-overlay.hidden {
+      display: none;
+    }
+
+    .modal-box {
+      background: var(--surface);
+      border-radius: 26px;
+      max-width: 560px;
+      width: 100%;
+      padding: 26px 22px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-lg);
+      max-height: 92vh;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: auto;
+      position: relative;
+    }
+
+    .modal-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--success), var(--warning));
+      border-radius: 26px 26px 0 0;
+    }
+
+    .modal-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .modal-head h2 {
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .modal-head h2 i {
+      color: var(--primary);
+      font-size: 18px;
+    }
+
+    .modal-close {
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 16px;
+      transition: var(--transition);
+      flex-shrink: 0;
+    }
+
+    .modal-close:hover {
+      background: var(--danger);
+      color: white;
+      border-color: var(--danger);
+      transform: rotate(90deg);
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 11px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .form-input, .form-textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: var(--input-radius);
+      border: 1.5px solid var(--border);
+      background: var(--surface-alt);
+      color: var(--text-primary);
+      font-size: 15px;
+      transition: var(--transition);
+      font-weight: 500;
+      -webkit-appearance: none;
+      appearance: none;
+      font-family: inherit;
+    }
+
+    .form-input::placeholder,
+    .form-textarea::placeholder {
+      color: var(--text-secondary);
+      opacity: 0.6;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px var(--primary-glow);
+      background: var(--surface-hover);
+    }
+
+    .form-textarea {
+      min-height: 80px;
+      resize: vertical;
+      line-height: 1.5;
+    }
+
+    body:not(.dark) input[type="date"],
+    body:not(.dark) input[type="time"] {
+      color-scheme: light;
+    }
+
+    body.dark input[type="date"],
+    body.dark input[type="time"] {
+      color-scheme: dark;
+    }
+
+    body.dark input[type="date"]::-webkit-calendar-picker-indicator,
+    body.dark input[type="time"]::-webkit-calendar-picker-indicator {
+      filter: invert(0.7);
+      cursor: pointer;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .type-selector {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .type-btn {
+      padding: 14px 8px;
+      border-radius: 14px;
+      border: 2px solid var(--border);
+      background: var(--surface-alt);
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      text-align: center;
+      font-family: inherit;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .type-btn i {
+      font-size: 18px;
+      color: var(--text-secondary);
+      transition: var(--transition);
+    }
+
+    .type-btn span {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--text-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .type-btn:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .type-btn.active[data-type="win"] {
+      border-color: var(--success);
+      background: rgba(0,168,112,0.1);
+      box-shadow: 0 8px 22px var(--success-glow);
+    }
+    .type-btn.active[data-type="win"] i { color: var(--success); }
+
+    .type-btn.active[data-type="lose"] {
+      border-color: var(--danger);
+      background: rgba(224,53,92,0.1);
+      box-shadow: 0 8px 22px var(--danger-glow);
+    }
+    .type-btn.active[data-type="lose"] i { color: var(--danger); }
+
+    .type-btn.active[data-type="random"] {
+      border-color: var(--warning);
+      background: rgba(217,158,0,0.1);
+      box-shadow: 0 8px 22px var(--warning-glow);
+    }
+    .type-btn.active[data-type="random"] i { color: var(--warning); }
+
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 22px;
+      flex-wrap: wrap;
+    }
+
+    .modal-actions .btn {
+      flex: 1;
+      min-width: 130px;
+    }
+
+    .btn {
+      border: none;
+      border-radius: var(--input-radius);
+      padding: 15px 20px;
+      font-weight: 800;
+      font-size: 15px;
+      cursor: pointer;
+      transition: var(--transition);
+      background: var(--primary);
+      color: white;
+      letter-spacing: 0.3px;
+      min-height: 52px;
+      -webkit-appearance: none;
+      appearance: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: inherit;
+    }
+
+    .btn:hover:not(:disabled),
+    .btn:active:not(:disabled) {
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px var(--primary-glow);
+    }
+
+    .btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .btn-success {
+      background: linear-gradient(135deg, var(--success), #009966);
+      box-shadow: 0 8px 22px var(--success-glow);
+    }
+
+    .btn-success:hover:not(:disabled),
+    .btn-success:active:not(:disabled) {
+      background: linear-gradient(135deg, #009966, #007a52);
+      box-shadow: 0 12px 30px var(--success-glow);
+    }
+
+    .btn-danger {
+      background: linear-gradient(135deg, var(--danger), #c02548);
+      box-shadow: 0 8px 22px var(--danger-glow);
+    }
+
+    .btn-danger:hover:not(:disabled),
+    .btn-danger:active:not(:disabled) {
+      background: linear-gradient(135deg, #c02548, #a01a3a);
+      box-shadow: 0 12px 30px var(--danger-glow);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--border);
+      color: var(--text-primary);
+    }
+
+    .btn-outline:hover:not(:disabled),
+    .btn-outline:active:not(:disabled) {
+      background: var(--surface-hover);
+      border-color: var(--primary);
+      color: var(--primary);
+      box-shadow: none;
+    }
+
+    /* ============ ADMIN PANEL ============ */
+    .admin-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .admin-header span {
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    .admin-header .btn {
+      width: auto;
+      padding: 12px 20px;
+      font-size: 14px;
+      min-height: 46px;
+    }
+
+    .admin-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+      max-height: 420px;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+
+    .admin-item {
+      background: var(--surface-alt);
+      border-radius: 16px;
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--primary);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      transition: var(--transition);
+    }
+
+    .admin-item.win { border-left-color: var(--success); }
+    .admin-item.lose { border-left-color: var(--danger); }
+    .admin-item.random { border-left-color: var(--warning); }
+
+    .admin-item:hover {
+      background: var(--surface-hover);
+      border-color: var(--primary);
+    }
+
+    .admin-item-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .admin-item-name {
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: -0.2px;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      word-break: break-word;
+    }
+
+    .admin-item-desc {
+      font-size: 11px;
+      color: var(--text-secondary);
+      font-weight: 500;
+      line-height: 1.5;
+      word-break: break-word;
+    }
+
+    .admin-item-desc span {
+      display: inline-block;
+      margin-right: 10px;
+      white-space: nowrap;
+    }
+
+    .admin-item-desc i {
+      color: var(--primary);
+      font-size: 10px;
+      margin-right: 3px;
+    }
+
+    .admin-item-actions {
+      display: flex;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .icon-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 11px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 13px;
+      transition: var(--transition);
+    }
+
+    .icon-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .icon-btn.edit:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      box-shadow: 0 6px 18px var(--primary-glow);
+    }
+
+    .icon-btn.delete:hover {
+      background: var(--danger);
+      color: white;
+      border-color: var(--danger);
+      box-shadow: 0 6px 18px var(--danger-glow);
+    }
+
+    /* ============ SAVE OVERLAY ============ */
+    .save-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(20,20,42,0.75);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      padding: 20px;
+      flex-direction: column;
+      gap: 18px;
+      text-align: center;
+    }
+
+    .save-overlay.hidden { display: none; }
+
+    .save-spinner {
+      width: 60px;
+      height: 60px;
+      border: 5px solid rgba(255,255,255,0.2);
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin 0.9s linear infinite;
+    }
+
+    .save-overlay-text {
+      color: white;
+      font-size: 15px;
+      font-weight: 700;
+      max-width: 340px;
+      line-height: 1.6;
+    }
+
+    .save-overlay-text small {
+      display: block;
+      font-size: 12px;
+      font-weight: 500;
+      opacity: 0.85;
+      margin-top: 6px;
+    }
+
+    /* ============ TOAST ============ */
+    .toast-container {
+      position: fixed;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10000;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+      max-width: 420px;
+      pointer-events: none;
+      padding: 0 12px;
+    }
+
+    .toast {
+      pointer-events: auto;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      color: var(--toast-text);
+      font-weight: 600;
+      font-size: 14px;
+      box-shadow: 0 14px 40px rgba(0,0,0,0.25);
+      animation: toastIn 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    @keyframes toastIn {
+      from { opacity: 0; transform: translateY(-24px) scale(0.96); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .toast .toast-icon {
+      width: 34px;
+      height: 34px;
+      min-width: 34px;
+      border-radius: 11px;
+      background: rgba(255,255,255,0.22);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+    }
+
+    .toast .toast-body {
+      flex: 1;
+      line-height: 1.4;
+    }
+
+    .toast.success { background: linear-gradient(135deg, var(--success), #008f5f); }
+    .toast.error { background: linear-gradient(135deg, var(--danger), #b8204a); }
+    .toast.warning { background: linear-gradient(135deg, var(--warning), #b88200); }
+    .toast.info { background: linear-gradient(135deg, var(--primary), #4a3ac8); }
+
+    .site-footer {
+      text-align: center;
+      padding: 24px 0 12px;
+      font-size: 12px;
+      color: var(--text-secondary);
+      font-weight: 500;
+      line-height: 1.6;
+    }
+
+    .site-footer i {
+      color: var(--primary);
+      margin: 0 4px;
+    }
+
+    @media (min-width: 640px) {
+      body { padding: 18px; }
+      .top-bar { padding: 12px 0 26px; }
+      .logo { font-size: 24px; }
+      .logo-mark { width: 42px; height: 42px; font-size: 20px; }
+      .logo-text .brand { font-size: 22px; }
+      .public-header h1 { font-size: 40px; }
+      .public-header p { font-size: 15px; }
+      .signal-list { grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); }
+      .modal-box { padding: 34px 30px; }
+      .modal-head h2 { font-size: 23px; }
+    }
+
+    @media (max-width: 420px) {
+      .type-selector { grid-template-columns: 1fr; }
+      .type-btn { flex-direction: row; justify-content: flex-start; padding: 14px; }
+      .type-btn i { font-size: 18px; }
+      .form-row { grid-template-columns: 1fr; }
+      .signal-data-grid { grid-template-columns: 1fr; }
+    }
+
+    @supports (padding: env(safe-area-inset-top)) {
+      body {
+        padding-top: max(12px, env(safe-area-inset-top));
+        padding-bottom: max(12px, env(safe-area-inset-bottom));
+        padding-left: max(12px, env(safe-area-inset-left));
+        padding-right: max(12px, env(safe-area-inset-right));
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="toast-container" id="toastContainer"></div>
+
+  <div class="app-container">
+    <!-- ============ TOP BAR ============ -->
+    <div class="top-bar">
+      <div class="logo">
+        <div class="logo-mark"><i class="fas fa-satellite-dish"></i></div>
+        <div class="logo-text">
+          <span class="brand">Signal Hub</span>
+          <span class="tagline">Live Betting Signals</span>
+        </div>
+      </div>
+
+      <div class="top-bar-actions">
+        <span class="sync-badge" id="syncBadge">
+          <i class="fas fa-circle"></i> <span id="syncText">Live</span>
+        </span>
+
+        <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle theme" aria-label="Toggle theme">
+          <i class="fas fa-sun theme-icon-sun"></i>
+          <i class="fas fa-moon theme-icon-moon"></i>
+        </button>
+
+        <button class="admin-entry-btn" id="adminEntryBtn" title="Lock" aria-label="Lock">
+          <i class="fas fa-lock"></i>
+          <span class="dot"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ============ PUBLIC VIEW ============ -->
+    <div id="publicView">
+      <div class="public-header">
+        <div class="live-pill">
+          <span class="live-dot"></span> Live Signal Feed
+        </div>
+        <h1>Today's Betting Signals</h1>
+        <p>Real-time signals managed by our team. Follow the date, time, bet amount, and multiplier for each signal.</p>
+      </div>
+
+      <div class="section-head">
+        <h2><i class="fas fa-list-ul"></i> All Signals</h2>
+        <span class="signal-count" id="signalCount">0 signals</span>
+      </div>
+
+      <div class="signal-list" id="signalList">
+        <div class="loading-state" style="grid-column:1/-1;">
+          <i class="fas fa-circle-notch"></i>
+          <p>Loading signals...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="site-footer">
+    Signal Hub <i class="fas fa-bolt"></i> Managed securely in real time
+  </div>
+
+  <!-- ============ SAVE OVERLAY ============ -->
+  <div class="save-overlay hidden" id="saveOverlay">
+    <div class="save-spinner"></div>
+    <div class="save-overlay-text" id="saveOverlayText">
+      Saving signal to the cloud...
+      <small>Please wait — this usually takes a few seconds.</small>
+    </div>
+  </div>
+
+  <!-- ============ ADMIN LOGIN MODAL ============ -->
+  <div class="modal-overlay hidden" id="loginModal">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h2><i class="fas fa-lock"></i> Secure Access</h2>
+        <button class="modal-close" id="closeLoginModal" aria-label="Close"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="form-group">
+        <label>Username</label>
+        <input type="text" id="adminUsername" class="form-input" placeholder="Username" autocomplete="off">
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="adminPassword" class="form-input" placeholder="Password" autocomplete="off">
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-outline" id="cancelLoginBtn">Cancel</button>
+        <button class="btn btn-success" id="confirmLoginBtn"><i class="fas fa-sign-in-alt"></i> Sign In</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ ADMIN PANEL MODAL ============ -->
+  <div class="modal-overlay hidden" id="adminModal">
+    <div class="modal-box" style="max-width:680px;">
+      <div class="modal-head">
+        <h2><i class="fas fa-sliders-h"></i> Manage Signals</h2>
+        <button class="modal-close" id="closeAdminModal" aria-label="Close"><i class="fas fa-times"></i></button>
+      </div>
+
+      <div class="admin-header">
+        <span><i class="fas fa-globe"></i> Changes sync globally</span>
+        <button class="btn btn-success" id="addSignalBtn" style="width:auto;"><i class="fas fa-plus"></i> Add New</button>
+      </div>
+
+      <div class="admin-list" id="adminList"></div>
+
+      <div class="modal-actions">
+        <button class="btn btn-outline" id="resetDefaultsBtn"><i class="fas fa-undo"></i> Reset Defaults</button>
+        <button class="btn" id="logoutAdminBtn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SIGNAL EDITOR MODAL ============ -->
+  <div class="modal-overlay hidden" id="editorModal">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h2><i class="fas fa-pen-to-square"></i> <span id="editorTitle">Add Signal</span></h2>
+        <button class="modal-close" id="closeEditorModal" aria-label="Close"><i class="fas fa-times"></i></button>
+      </div>
+
+      <div class="form-group">
+        <label>Signal Type</label>
+        <div class="type-selector">
+          <button class="type-btn active" data-type="win" id="typeWin" type="button">
+            <i class="fas fa-check-circle"></i>
+            <span>Win</span>
+          </button>
+          <button class="type-btn" data-type="lose" id="typeLose" type="button">
+            <i class="fas fa-times-circle"></i>
+            <span>Lose</span>
+          </button>
+          <button class="type-btn" data-type="random" id="typeRandom" type="button">
+            <i class="fas fa-random"></i>
+            <span>Random</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Signal Name</label>
+        <input type="text" id="signalName" class="form-input" placeholder="e.g. Aviator Main Signal" maxlength="60">
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Date</label>
+          <input type="date" id="signalDate" class="form-input">
+        </div>
+        <div class="form-group">
+          <label>Bet Amount (USD)</label>
+          <input type="text" id="signalAmount" class="form-input" placeholder="e.g. $10.00" maxlength="20">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Start Time</label>
+          <input type="time" id="signalStartTime" class="form-input">
+        </div>
+        <div class="form-group">
+          <label>End Time</label>
+          <input type="time" id="signalEndTime" class="form-input">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Multiplier</label>
+          <input type="text" id="signalMultiplier" class="form-input" placeholder="e.g. 2.05x" maxlength="20">
+        </div>
+        <div class="form-group">
+          <label>Target / Game</label>
+          <input type="text" id="signalTarget" class="form-input" placeholder="e.g. Aviator" maxlength="40">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Short Note for Users</label>
+        <textarea id="signalNote" class="form-textarea" placeholder="e.g. Place your bet 2 minutes before start time." maxlength="200"></textarea>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn btn-outline" id="cancelEditorBtn">Cancel</button>
+        <button class="btn btn-success" id="saveSignalBtn"><i class="fas fa-cloud-upload-alt"></i> Save Globally</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ DELETE CONFIRM MODAL ============ -->
+  <div class="modal-overlay hidden" id="deleteModal">
+    <div class="modal-box" style="max-width:400px;">
+      <div class="modal-head">
+        <h2><i class="fas fa-triangle-exclamation" style="color:var(--danger);"></i> Delete Signal?</h2>
+        <button class="modal-close" id="closeDeleteModal" aria-label="Close"><i class="fas fa-times"></i></button>
+      </div>
+      <p style="font-size:14px; color:var(--text-secondary); font-weight:500; line-height:1.6; margin-bottom:20px;">
+        Are you sure you want to delete <strong id="deleteSignalName" style="color:var(--text-primary);">this signal</strong>? This will sync to all users globally.
+      </p>
+      <div class="modal-actions">
+        <button class="btn btn-outline" id="cancelDeleteBtn">Cancel</button>
+        <button class="btn btn-danger" id="confirmDeleteBtn"><i class="fas fa-trash"></i> Delete Globally</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      'use strict';
+
+      /* ============================================================
+         ADMIN CREDENTIALS
+         Username: Alishba
+         Password: Alis123@
+         ============================================================ */
+      const ADMIN_USERNAME = 'Alishba';
+      const ADMIN_PASSWORD = 'Alis123@';
+
+      /* ============================================================
+         CONFIGURATION
+         ============================================================ */
+      const API_ENDPOINT = '/api/signals';
+      const ADMIN_SESSION_KEY = 'signalhub_admin_session_global';
+      const THEME_KEY = 'signalhub_theme_global';
+      const AUTO_REFRESH_MS = 30000;
+
+      /* ============================================================
+         STATE
+         ============================================================ */
+      let signalsCache = [];
+      let editingType = 'win';
+      let editingId = null;
+      let deletingId = null;
+      let autoRefreshTimer = null;
+      let isOnline = true;
+
+      /* ============================================================
+         ELEMENT REFERENCES
+         ============================================================ */
+      const toastContainer = document.getElementById('toastContainer');
+      const syncBadge = document.getElementById('syncBadge');
+      const syncText = document.getElementById('syncText');
+      const themeToggleBtn = document.getElementById('themeToggleBtn');
+      const adminEntryBtn = document.getElementById('adminEntryBtn');
+      const signalList = document.getElementById('signalList');
+      const signalCount = document.getElementById('signalCount');
+
+      const saveOverlay = document.getElementById('saveOverlay');
+      const saveOverlayText = document.getElementById('saveOverlayText');
+
+      const loginModal = document.getElementById('loginModal');
+      const closeLoginModal = document.getElementById('closeLoginModal');
+      const adminUsername = document.getElementById('adminUsername');
+      const adminPassword = document.getElementById('adminPassword');
+      const cancelLoginBtn = document.getElementById('cancelLoginBtn');
+      const confirmLoginBtn = document.getElementById('confirmLoginBtn');
+
+      const adminModal = document.getElementById('adminModal');
+      const closeAdminModal = document.getElementById('closeAdminModal');
+      const adminList = document.getElementById('adminList');
+      const addSignalBtn = document.getElementById('addSignalBtn');
+      const resetDefaultsBtn = document.getElementById('resetDefaultsBtn');
+      const logoutAdminBtn = document.getElementById('logoutAdminBtn');
+
+      const editorModal = document.getElementById('editorModal');
+      const closeEditorModal = document.getElementById('closeEditorModal');
+      const editorTitle = document.getElementById('editorTitle');
+      const typeWin = document.getElementById('typeWin');
+      const typeLose = document.getElementById('typeLose');
+      const typeRandom = document.getElementById('typeRandom');
+      const signalName = document.getElementById('signalName');
+      const signalDate = document.getElementById('signalDate');
+      const signalStartTime = document.getElementById('signalStartTime');
+      const signalEndTime = document.getElementById('signalEndTime');
+      const signalAmount = document.getElementById('signalAmount');
+      const signalMultiplier = document.getElementById('signalMultiplier');
+      const signalTarget = document.getElementById('signalTarget');
+      const signalNote = document.getElementById('signalNote');
+      const cancelEditorBtn = document.getElementById('cancelEditorBtn');
+      const saveSignalBtn = document.getElementById('saveSignalBtn');
+
+      const deleteModal = document.getElementById('deleteModal');
+      const closeDeleteModal = document.getElementById('closeDeleteModal');
+      const deleteSignalName = document.getElementById('deleteSignalName');
+      const cancelDeleteBtn = document.getElementById('cancelDeleteBtn');
+      const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
+
+      /* ============================================================
+         TOASTS
+         ============================================================ */
+      function showToast(message, type = 'info', duration = 3200) {
+        const icons = {
+          success: 'fa-check-circle',
+          error: 'fa-times-circle',
+          warning: 'fa-exclamation-triangle',
+          info: 'fa-info-circle'
+        };
+        const toast = document.createElement('div');
+        toast.className = 'toast ' + type;
+        toast.innerHTML = `
+          <div class="toast-icon"><i class="fas ${icons[type] || 'fa-info-circle'}"></i></div>
+          <div class="toast-body">${message}</div>
+        `;
+        toastContainer.appendChild(toast);
+        setTimeout(() => {
+          toast.style.transition = 'opacity 0.3s, transform 0.3s';
+          toast.style.opacity = '0';
+          toast.style.transform = 'translateY(-16px)';
+          setTimeout(() => toast.remove(), 300);
+        }, duration);
+      }
+
+      /* ============================================================
+         ONLINE / OFFLINE BADGE
+         ============================================================ */
+      function updateSyncBadge() {
+        if (isOnline) {
+          syncBadge.classList.remove('offline');
+          syncBadge.querySelector('i').className = 'fas fa-circle';
+          syncText.textContent = 'Live';
+        } else {
+          syncBadge.classList.add('offline');
+          syncBadge.querySelector('i').className = 'fas fa-exclamation-circle';
+          syncText.textContent = 'Offline';
+        }
+      }
+
+      window.addEventListener('online', () => { isOnline = true; updateSyncBadge(); loadSignals(); });
+      window.addEventListener('offline', () => { isOnline = false; updateSyncBadge(); });
+
+      /* ============================================================
+         THEME
+         ============================================================ */
+      function applyTheme(theme) {
+        if (theme === 'dark') {
+          document.body.classList.add('dark');
+        } else {
+          document.body.classList.remove('dark');
+        }
+        try { localStorage.setItem(THEME_KEY, theme); } catch (e) {}
+      }
+
+      function initTheme() {
+        let saved = 'light';
+        try { saved = localStorage.getItem(THEME_KEY) || 'light'; } catch (e) { saved = 'light'; }
+        applyTheme(saved === 'dark' ? 'dark' : 'light');
+      }
+
+      themeToggleBtn.addEventListener('click', () => {
+        const isDark = document.body.classList.contains('dark');
+        applyTheme(isDark ? 'light' : 'dark');
+        showToast(isDark ? 'Light theme enabled.' : 'Dark theme enabled.', 'info', 1800);
+      });
+
+      /* ============================================================
+         SAVE OVERLAY
+         ============================================================ */
+      function showSaveOverlay(message) {
+        saveOverlayText.innerHTML = message;
+        saveOverlay.classList.remove('hidden');
+      }
+
+      function hideSaveOverlay() {
+        saveOverlay.classList.add('hidden');
+      }
+
+      /* ============================================================
+         API HELPERS
+         ============================================================ */
+      async function apiGetSignals() {
+        const response = await fetch(API_ENDPOINT, {
+          method: 'GET',
+          headers: { 'Accept': 'application/json' },
+          cache: 'no-store'
+        });
+        if (!response.ok) {
+          throw new Error('Failed to load signals (HTTP ' + response.status + ')');
+        }
+        const data = await response.json();
+        if (!Array.isArray(data)) return [];
+        return data;
+      }
+
+      async function apiSaveSignals(signals) {
+        const response = await fetch(API_ENDPOINT, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(signals)
+        });
+        const data = await response.json().catch(() => ({}));
+        if (!response.ok) {
+          throw new Error(data.error || 'Save failed (HTTP ' + response.status + ')');
+        }
+        return data;
+      }
+
+      /* ============================================================
+         LOAD SIGNALS
+         ============================================================ */
+      async function loadSignals(showLoader = false) {
+        if (showLoader) {
+          signalList.innerHTML = `
+            <div class="loading-state" style="grid-column:1/-1;">
+              <i class="fas fa-circle-notch"></i>
+              <p>Loading signals...</p>
+            </div>
+          `;
+        }
+
+        try {
+          const signals = await apiGetSignals();
+          signalsCache = signals;
+          renderPublicView();
+          if (!adminModal.classList.contains('hidden')) {
+            renderAdminList();
+          }
+          // Fetch success — mark online
+          if (!isOnline) {
+            isOnline = true;
+            updateSyncBadge();
+          }
+        } catch (error) {
+          console.error('Load error:', error);
+          // If we already have cached signals, keep showing them
+          if (signalsCache.length === 0) {
+            signalList.innerHTML = `
+              <div class="empty-state" style="grid-column:1/-1;">
+                <i class="fas fa-exclamation-triangle" style="color: var(--danger);"></i>
+                <p>Could not load signals. Please check your connection and refresh.</p>
+              </div>
+            `;
+            signalCount.textContent = '0 signals';
+          }
+          if (!navigator.onLine) {
+            isOnline = false;
+            updateSyncBadge();
+          }
+        }
+      }
+
+      /* ============================================================
+         FORMATTERS
+         ============================================================ */
+      function formatDate(dateStr) {
+        if (!dateStr) return '—';
+        try {
+          const d = new Date(dateStr + 'T00:00:00');
+          if (isNaN(d.getTime())) return dateStr;
+          const options = { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' };
+          return d.toLocaleDateString('en-US', options);
+        } catch (e) {
+          return dateStr;
+        }
+      }
+
+      function formatTime(timeStr) {
+        if (!timeStr) return '—';
+        try {
+          const [h, m] = timeStr.split(':');
+          const hour = parseInt(h, 10);
+          const ampm = hour >= 12 ? 'PM' : 'AM';
+          const h12 = hour % 12 || 12;
+          return h12 + ':' + m + ' ' + ampm;
+        } catch (e) {
+          return timeStr;
+        }
+      }
+
+      function escapeHtml(str) {
+        if (!str) return '';
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+      }
+
+      function todayStr() {
+        const d = new Date();
+        const y = d.getFullYear();
+        const m = String(d.getMonth() + 1).padStart(2, '0');
+        const day = String(d.getDate()).padStart(2, '0');
+        return y + '-' + m + '-' + day;
+      }
+
+      /* ============================================================
+         PUBLIC VIEW RENDER
+         ============================================================ */
+      function renderPublicView() {
+        const signals = signalsCache;
+        signalCount.textContent = signals.length + ' signal' + (signals.length === 1 ? '' : 's');
+
+        if (signals.length === 0) {
+          signalList.innerHTML = `
+            <div class="empty-state" style="grid-column:1/-1;">
+              <i class="fas fa-inbox"></i>
+              <p>No signals available yet. Check back soon.</p>
+            </div>
+          `;
+          return;
+        }
+
+        signalList.innerHTML = signals.map(s => {
+          const type = s.type || 'win';
+          const tagLabel = type === 'win' ? 'Win' : type === 'lose' ? 'Lose' : 'Random';
+          const tagIcon = type === 'win' ? 'fa-check-circle' : type === 'lose' ? 'fa-times-circle' : 'fa-random';
+
+          return `
+            <div class="signal-card ${type}">
+              <div class="signal-card-header">
+                <span class="tag"><i class="fas ${tagIcon}"></i> ${tagLabel}</span>
+                <span class="date-badge"><i class="fas fa-calendar-day"></i> ${escapeHtml(formatDate(s.date))}</span>
+              </div>
+              <div class="signal-card-body">
+                <div class="signal-name">${escapeHtml(s.name || 'Untitled Signal')}</div>
+
+                <div class="signal-data-grid">
+                  <div class="data-item">
+                    <div class="data-label"><i class="fas fa-hourglass-start"></i> Start Time</div>
+                    <div class="data-value time">${escapeHtml(formatTime(s.startTime))}</div>
+                  </div>
+                  <div class="data-item">
+                    <div class="data-label"><i class="fas fa-hourglass-end"></i> End Time</div>
+                    <div class="data-value time">${escapeHtml(formatTime(s.endTime))}</div>
+                  </div>
+                  <div class="data-item">
+                    <div class="data-label"><i class="fas fa-dollar-sign"></i> Bet Amount</div>
+                    <div class="data-value amount">${escapeHtml(s.amount || '—')}</div>
+                  </div>
+                  <div class="data-item">
+                    <div class="data-label"><i class="fas fa-chart-line"></i> Multiplier</div>
+                    <div class="data-value multiplier">${escapeHtml(s.multiplier || '—')}</div>
+                  </div>
+                </div>
+
+                ${s.note ? `
+                  <div class="signal-note">
+                    <i class="fas fa-circle-info"></i>
+                    <div>
+                      <div class="note-label">Note</div>
+                      <div class="note-text">${escapeHtml(s.note)}</div>
+                    </div>
+                  </div>
+                ` : ''}
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      /* ============================================================
+         ADMIN LIST RENDER
+         ============================================================ */
+      function renderAdminList() {
+        const signals = signalsCache;
+        if (signals.length === 0) {
+          adminList.innerHTML = `
+            <div class="empty-state">
+              <i class="fas fa-inbox"></i>
+              <p>No signals yet. Click "Add New" to create one.</p>
+            </div>
+          `;
+          return;
+        }
+        adminList.innerHTML = signals.map(s => {
+          const type = s.type || 'win';
+          const tagLabel = type === 'win' ? 'Win' : type === 'lose' ? 'Lose' : 'Random';
+          const tagIcon = type === 'win' ? 'fa-check-circle' : type === 'lose' ? 'fa-times-circle' : 'fa-random';
+          return `
+            <div class="admin-item ${type}">
+              <div class="admin-item-info">
+                <div class="admin-item-name">
+                  <i class="fas ${tagIcon}" style="font-size:12px;"></i>
+                  ${escapeHtml(s.name || 'Untitled')}
+                  <span style="font-size:10px; font-weight:800; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.8px;">${tagLabel}</span>
+                </div>
+                <div class="admin-item-desc">
+                  <span><i class="fas fa-calendar-day"></i>${escapeHtml(s.date || '—')}</span>
+                  <span><i class="fas fa-clock"></i>${escapeHtml(s.startTime || '—')} – ${escapeHtml(s.endTime || '—')}</span>
+                  <span><i class="fas fa-dollar-sign"></i>${escapeHtml(s.amount || '—')}</span>
+                  <span><i class="fas fa-chart-line"></i>${escapeHtml(s.multiplier || '—')}</span>
+                </div>
+              </div>
+              <div class="admin-item-actions">
+                <button class="icon-btn edit" data-action="edit" data-id="${s.id}" title="Edit"><i class="fas fa-pen"></i></button>
+                <button class="icon-btn delete" data-action="delete" data-id="${s.id}" title="Delete"><i class="fas fa-trash"></i></button>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        adminList.querySelectorAll('[data-action="edit"]').forEach(btn => {
+          btn.addEventListener('click', () => openEditor(btn.dataset.id));
+        });
+        adminList.querySelectorAll('[data-action="delete"]').forEach(btn => {
+          btn.addEventListener('click', () => openDelete(btn.dataset.id));
+        });
+      }
+
+      /* ============================================================
+         MODAL HELPERS
+         ============================================================ */
+      function showModal(modal) { modal.classList.remove('hidden'); }
+      function hideModal(modal) { modal.classList.add('hidden'); }
+
+      /* ============================================================
+         ADMIN ENTRY
+         ============================================================ */
+      adminEntryBtn.addEventListener('click', () => {
+        if (localStorage.getItem(ADMIN_SESSION_KEY) === 'true') {
+          renderAdminList();
+          showModal(adminModal);
+        } else {
+          adminUsername.value = '';
+          adminPassword.value = '';
+          showModal(loginModal);
+          setTimeout(() => adminUsername.focus(), 100);
+        }
+      });
+
+      /* ============================================================
+         LOGIN
+         ============================================================ */
+      closeLoginModal.addEventListener('click', () => hideModal(loginModal));
+      cancelLoginBtn.addEventListener('click', () => hideModal(loginModal));
+      loginModal.addEventListener('click', (e) => {
+        if (e.target === loginModal) hideModal(loginModal);
+      });
+
+      function attemptLogin() {
+        const u = adminUsername.value.trim();
+        const p = adminPassword.value;
+        if (u === ADMIN_USERNAME && p === ADMIN_PASSWORD) {
+          localStorage.setItem(ADMIN_SESSION_KEY, 'true');
+          hideModal(loginModal);
+          showToast('Welcome back!', 'success');
+          renderAdminList();
+          showModal(adminModal);
+        } else {
+          showToast('Incorrect username or password.', 'error');
+          adminPassword.value = '';
+        }
+      }
+
+      confirmLoginBtn.addEventListener('click', attemptLogin);
+      [adminUsername, adminPassword].forEach(el => {
+        el.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') attemptLogin();
+        });
+      });
+
+      /* ============================================================
+         ADMIN MODAL
+         ============================================================ */
+      closeAdminModal.addEventListener('click', () => hideModal(adminModal));
+      adminModal.addEventListener('click', (e) => {
+        if (e.target === adminModal) hideModal(adminModal);
+      });
+
+      logoutAdminBtn.addEventListener('click', () => {
+        localStorage.removeItem(ADMIN_SESSION_KEY);
+        hideModal(adminModal);
+        showToast('Signed out.', 'info');
+      });
+
+      resetDefaultsBtn.addEventListener('click', async () => {
+        if (!confirm('Reset all signals to empty? This will delete all current signals globally.')) return;
+
+        showSaveOverlay('Resetting signals globally...<small>All users will see the change shortly.</small>');
+        try {
+          await apiSaveSignals([]);
+          signalsCache = [];
+          renderPublicView();
+          renderAdminList();
+          hideSaveOverlay();
+          showToast('All signals cleared globally.', 'warning');
+        } catch (error) {
+          hideSaveOverlay();
+          showToast('Failed to reset: ' + error.message, 'error', 5000);
+        }
+      });
+
+      /* ============================================================
+         EDITOR
+         ============================================================ */
+      function openEditor(id) {
+        if (id) {
+          const sig = signalsCache.find(s => s.id === id);
+          if (!sig) return;
+          editingId = id;
+          editorTitle.textContent = 'Edit Signal';
+          editingType = sig.type || 'win';
+          signalName.value = sig.name || '';
+          signalDate.value = sig.date || todayStr();
+          signalStartTime.value = sig.startTime || '';
+          signalEndTime.value = sig.endTime || '';
+          signalAmount.value = sig.amount || '';
+          signalMultiplier.value = sig.multiplier || '';
+          signalTarget.value = sig.target || '';
+          signalNote.value = sig.note || '';
+        } else {
+          editingId = null;
+          editorTitle.textContent = 'Add Signal';
+          editingType = 'win';
+          signalName.value = '';
+          signalDate.value = todayStr();
+          signalStartTime.value = '10:00';
+          signalEndTime.value = '10:30';
+          signalAmount.value = '$10.00';
+          signalMultiplier.value = '2.00x';
+          signalTarget.value = 'Aviator';
+          signalNote.value = '';
+        }
+        updateTypeButtons();
+        showModal(editorModal);
+        setTimeout(() => signalName.focus(), 120);
+      }
+
+      function updateTypeButtons() {
+        [typeWin, typeLose, typeRandom].forEach(b => b.classList.remove('active'));
+        if (editingType === 'win') typeWin.classList.add('active');
+        else if (editingType === 'lose') typeLose.classList.add('active');
+        else typeRandom.classList.add('active');
+      }
+
+      [typeWin, typeLose, typeRandom].forEach(btn => {
+        btn.addEventListener('click', () => {
+          editingType = btn.dataset.type;
+          updateTypeButtons();
+        });
+      });
+
+      addSignalBtn.addEventListener('click', () => openEditor(null));
+      closeEditorModal.addEventListener('click', () => hideModal(editorModal));
+      cancelEditorBtn.addEventListener('click', () => hideModal(editorModal));
+      editorModal.addEventListener('click', (e) => {
+        if (e.target === editorModal) hideModal(editorModal);
+      });
+
+      /* ============================================================
+         SAVE SIGNAL — GLOBAL
+         ============================================================ */
+      saveSignalBtn.addEventListener('click', async () => {
+        const name = signalName.value.trim();
+        if (!name) {
+          showToast('Please enter a signal name.', 'warning');
+          signalName.focus();
+          return;
+        }
+        if (!signalDate.value) {
+          showToast('Please select a date.', 'warning');
+          signalDate.focus();
+          return;
+        }
+
+        const payload = {
+          type: editingType,
+          name: name,
+          date: signalDate.value,
+          startTime: signalStartTime.value,
+          endTime: signalEndTime.value,
+          amount: signalAmount.value.trim(),
+          multiplier: signalMultiplier.value.trim(),
+          target: signalTarget.value.trim(),
+          note: signalNote.value.trim(),
+          createdAt: new Date().toISOString()
+        };
+
+        // Build the new array
+        let updatedSignals;
+        if (editingId) {
+          updatedSignals = signalsCache.map(s => s.id === editingId ? { ...s, ...payload } : s);
+        } else {
+          payload.id = 'sig_' + Date.now() + '_' + Math.random().toString(36).slice(2, 8);
+          updatedSignals = [payload, ...signalsCache];
+        }
+
+        // Show blocking overlay
+        hideModal(editorModal);
+        showSaveOverlay('Saving signal to the cloud...<small>Vercel will redeploy in 30–60 seconds. All users will see the update after that.</small>');
+        saveSignalBtn.disabled = true;
+
+        try {
+          await apiSaveSignals(updatedSignals);
+          signalsCache = updatedSignals;
+          renderPublicView();
+          renderAdminList();
+          hideSaveOverlay();
+          saveSignalBtn.disabled = false;
+          showToast(
+            editingId ? 'Signal updated globally! Users will see it in ~30–60s.' : 'Signal added globally! Users will see it in ~30–60s.',
+            'success',
+            5000
+          );
+        } catch (error) {
+          hideSaveOverlay();
+          saveSignalBtn.disabled = false;
+          showToast('Save failed: ' + error.message, 'error', 6000);
+          // Reopen editor so user can retry
+          showModal(editorModal);
+        }
+      });
+
+      /* ============================================================
+         DELETE — GLOBAL
+         ============================================================ */
+      function openDelete(id) {
+        const sig = signalsCache.find(s => s.id === id);
+        if (!sig) return;
+        deletingId = id;
+        deleteSignalName.textContent = sig.name || 'this signal';
+        showModal(deleteModal);
+      }
+
+      closeDeleteModal.addEventListener('click', () => hideModal(deleteModal));
+      cancelDeleteBtn.addEventListener('click', () => hideModal(deleteModal));
+      deleteModal.addEventListener('click', (e) => {
+        if (e.target === deleteModal) hideModal(deleteModal);
+      });
+
+      confirmDeleteBtn.addEventListener('click', async () => {
+        if (!deletingId) return;
+
+        const updatedSignals = signalsCache.filter(s => s.id !== deletingId);
+
+        hideModal(deleteModal);
+        showSaveOverlay('Deleting signal globally...<small>All users will see the change shortly.</small>');
+        confirmDeleteBtn.disabled = true;
+
+        try {
+          await apiSaveSignals(updatedSignals);
+          signalsCache = updatedSignals;
+          renderPublicView();
+          renderAdminList();
+          hideSaveOverlay();
+          confirmDeleteBtn.disabled = false;
+          showToast('Signal deleted globally.', 'success', 4000);
+          deletingId = null;
+        } catch (error) {
+          hideSaveOverlay();
+          confirmDeleteBtn.disabled = false;
+          showToast('Delete failed: ' + error.message, 'error', 6000);
+        }
+      });
+
+      /* ============================================================
+         AUTO REFRESH
+         ============================================================ */
+      function startAutoRefresh() {
+        if (autoRefreshTimer) clearInterval(autoRefreshTimer);
+        autoRefreshTimer = setInterval(() => {
+          // Only refresh the public view. Skip if admin modal is open
+          // to avoid overwriting the admin's view mid-edit.
+          if (adminModal.classList.contains('hidden') &&
+              editorModal.classList.contains('hidden')) {
+            loadSignals(false);
+          }
+        }, AUTO_REFRESH_MS);
+      }
+
+      /* ============================================================
+         REFRESH ON VISIBILITY
+         ============================================================ */
+      document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) {
+          loadSignals(false);
+        }
+      });
+
+      /* ============================================================
+         INIT
+         ============================================================ */
+      initTheme();
+      updateSyncBadge();
+      [loginModal, adminModal, editorModal, deleteModal].forEach(m => m.classList.add('hidden'));
+      loadSignals(true).then(startAutoRefresh);
+    })();
+  </script>
+</body>
+</html>
