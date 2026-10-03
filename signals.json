@@ -1,1 +1,15 @@
-[]
+[
+  {
+    "type": "win",
+    "name": "new @1",
+    "date": "2026-10-03",
+    "startTime": "10:00",
+    "endTime": "10:30",
+    "amount": "$10.00",
+    "multiplier": "2.00x",
+    "target": "Aviator",
+    "note": "",
+    "createdAt": "2026-10-03T15:37:14.716Z",
+    "id": "sig_1791041834716_baaemp"
+  }
+]
