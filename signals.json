@@ -1,0 +1,15 @@
+[
+  {
+    "id": "sig_1",
+    "type": "win",
+    "name": "Aviator Morning Signal",
+    "date": "2026-10-03",
+    "startTime": "10:00",
+    "endTime": "10:30",
+    "amount": "$10.00",
+    "multiplier": "2.05x",
+    "target": "Aviator",
+    "note": "Place your bet 2 minutes before start time.",
+    "createdAt": "2026-10-03T10:00:00.000Z"
+  }
+]
