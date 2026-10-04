@@ -1,15 +1,15 @@
 [
   {
     "type": "win",
-    "name": "new @1",
-    "date": "2026-10-03",
-    "startTime": "10:00",
-    "endTime": "10:30",
-    "amount": "$10.00",
-    "multiplier": "2.00x",
-    "target": "Aviator",
-    "note": "",
-    "createdAt": "2026-10-03T15:37:14.716Z",
+    "name": "Signal # 001",
+    "date": "2026-10-04",
+    "startTime": "12:10",
+    "endTime": "12:30",
+    "amount": "$16.00",
+    "multiplier": "2.50",
+    "target": "Nexabet",
+    "note": "On time means no lose.",
+    "createdAt": "2026-10-04T01:20:30.545Z",
     "id": "sig_1791041834716_baaemp"
   }
 ]
