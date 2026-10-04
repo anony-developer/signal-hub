@@ -3,13 +3,13 @@
     "type": "win",
     "name": "Signal # 001",
     "date": "2026-10-04",
-    "startTime": "12:10",
-    "endTime": "12:30",
+    "startTime": "12:45",
+    "endTime": "13:10",
     "amount": "$16.00",
     "multiplier": "2.50",
-    "target": "Nexabet",
+    "target": "Win-Crafter",
     "note": "On time means no lose.",
-    "createdAt": "2026-10-04T01:20:30.545Z",
+    "createdAt": "2026-10-04T07:46:17.220Z",
     "id": "sig_1791041834716_baaemp"
   }
 ]
