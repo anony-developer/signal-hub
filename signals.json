@@ -1,15 +1,15 @@
 [
   {
     "type": "win",
-    "name": "Signal # 002",
-    "date": "2026-10-04",
-    "startTime": "19:00",
-    "endTime": "19:42",
-    "amount": "$12.00",
-    "multiplier": "1.65x",
+    "name": "Signal # 0103023",
+    "date": "2026-10-05",
+    "startTime": "19:15",
+    "endTime": "19:50",
+    "amount": "$13.00",
+    "multiplier": "2.10x",
     "target": "Aviator",
     "note": "Play On time",
-    "createdAt": "2026-10-04T11:22:28.934Z",
+    "createdAt": "2026-10-05T06:46:07.155Z",
     "id": "sig_1791112920039_qrkeqe"
   }
 ]
