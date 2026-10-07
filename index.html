@@ -499,6 +499,11 @@
       margin-bottom: 14px;
     }
 
+    /* NEW: full-width tile (Game / Target) */
+    .signal-data-grid .data-item.full-width {
+      grid-column: 1 / -1;
+    }
+
     .data-item {
       background: var(--surface-alt);
       border-radius: 14px;
@@ -543,6 +548,11 @@
     .data-item .data-value.multiplier { color: var(--warning); }
     .data-item .data-value.time { color: var(--info); }
     .data-item .data-value.target { color: var(--primary); }
+
+    /* NEW: slightly larger value on the full-width Game/Target tile */
+    .data-item.full-width .data-value {
+      font-size: 17px;
+    }
 
     .signal-note {
       background: rgba(217,158,0,0.08);
@@ -1624,14 +1634,12 @@
           if (!adminModal.classList.contains('hidden')) {
             renderAdminList();
           }
-          // Fetch success — mark online
           if (!isOnline) {
             isOnline = true;
             updateSyncBadge();
           }
         } catch (error) {
           console.error('Load error:', error);
-          // If we already have cached signals, keep showing them
           if (signalsCache.length === 0) {
             signalList.innerHTML = `
               <div class="empty-state" style="grid-column:1/-1;">
@@ -1726,7 +1734,7 @@
                 <div class="signal-name">${escapeHtml(s.name || 'Untitled Signal')}</div>
 
                 <div class="signal-data-grid">
-                  <div class="data-item">
+                  <div class="data-item full-width">
                     <div class="data-label"><i class="fas fa-gamepad"></i> Game / Target</div>
                     <div class="data-value target">${escapeHtml(s.target || '—')}</div>
                   </div>
@@ -1981,7 +1989,6 @@
           createdAt: new Date().toISOString()
         };
 
-        // Build the new array
         let updatedSignals;
         if (editingId) {
           updatedSignals = signalsCache.map(s => s.id === editingId ? { ...s, ...payload } : s);
@@ -1990,7 +1997,6 @@
           updatedSignals = [payload, ...signalsCache];
         }
 
-        // Show blocking overlay
         hideModal(editorModal);
         showSaveOverlay('Saving signal to the cloud...<small>Vercel will redeploy in 30–60 seconds. All users will see the update after that.</small>');
         saveSignalBtn.disabled = true;
@@ -2011,7 +2017,6 @@
           hideSaveOverlay();
           saveSignalBtn.disabled = false;
           showToast('Save failed: ' + error.message, 'error', 6000);
-          // Reopen editor so user can retry
           showModal(editorModal);
         }
       });
@@ -2064,8 +2069,6 @@
       function startAutoRefresh() {
         if (autoRefreshTimer) clearInterval(autoRefreshTimer);
         autoRefreshTimer = setInterval(() => {
-          // Only refresh the public view. Skip if admin modal is open
-          // to avoid overwriting the admin's view mid-edit.
           if (adminModal.classList.contains('hidden') &&
               editorModal.classList.contains('hidden')) {
             loadSignals(false);
