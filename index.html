@@ -542,6 +542,7 @@
     .data-item .data-value.amount { color: var(--success); }
     .data-item .data-value.multiplier { color: var(--warning); }
     .data-item .data-value.time { color: var(--info); }
+    .data-item .data-value.target { color: var(--primary); }
 
     .signal-note {
       background: rgba(217,158,0,0.08);
@@ -1246,7 +1247,7 @@
           <span class="live-dot"></span> Live Signal Feed
         </div>
         <h1>Today's Betting Signals</h1>
-        <p>Real-time signals managed by our team. Follow the date, time, bet amount, and multiplier for each signal.</p>
+        <p>Real-time signals managed by our team. Follow the game, date, time, bet amount, and multiplier for each signal.</p>
       </div>
 
       <div class="section-head">
@@ -1725,6 +1726,10 @@
                 <div class="signal-name">${escapeHtml(s.name || 'Untitled Signal')}</div>
 
                 <div class="signal-data-grid">
+                  <div class="data-item">
+                    <div class="data-label"><i class="fas fa-gamepad"></i> Game / Target</div>
+                    <div class="data-value target">${escapeHtml(s.target || '—')}</div>
+                  </div>
                   <div class="data-item">
                     <div class="data-label"><i class="fas fa-hourglass-start"></i> Start Time</div>
                     <div class="data-value time">${escapeHtml(formatTime(s.startTime))}</div>
