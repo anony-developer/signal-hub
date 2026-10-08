@@ -1,6 +1,19 @@
 [
   {
     "type": "win",
+    "name": "Signal # 0292841",
+    "date": "2026-10-08",
+    "startTime": "20:14",
+    "endTime": "20:42",
+    "amount": "$27",
+    "multiplier": "1.70x",
+    "target": "Win-Crafter",
+    "note": "Use Signal on Time to Minimize the lose",
+    "createdAt": "2026-10-08T06:59:05.351Z",
+    "id": "sig_1791442745352_ltrpxm"
+  },
+  {
+    "type": "win",
     "name": "Signal # 01033243",
     "date": "2026-10-07",
     "startTime": "23:30",
