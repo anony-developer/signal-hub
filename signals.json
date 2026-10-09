@@ -1,1 +1,15 @@
-[]
+[
+  {
+    "type": "win",
+    "name": "Signal # 001023",
+    "date": "2026-10-10",
+    "startTime": "01:58",
+    "endTime": "02:20",
+    "amount": "$22",
+    "multiplier": "1.80",
+    "target": "WinCrafter",
+    "note": "",
+    "createdAt": "2026-10-09T20:59:09.757Z",
+    "id": "sig_1791579549757_a4h6t9"
+  }
+]
