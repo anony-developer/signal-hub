@@ -1,6 +1,19 @@
 [
   {
     "type": "win",
+    "name": "Signal # 0292841",
+    "date": "2026-10-10",
+    "startTime": "06:50",
+    "endTime": "07:25",
+    "amount": "$37",
+    "multiplier": "1.55",
+    "target": "WinCrafter",
+    "note": "Use it on time",
+    "createdAt": "2026-10-09T22:25:35.764Z",
+    "id": "sig_1791584735765_8zfec3"
+  },
+  {
+    "type": "win",
     "name": "Signal # 001023",
     "date": "2026-10-10",
     "startTime": "01:58",
