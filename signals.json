@@ -1,6 +1,19 @@
 [
   {
     "type": "win",
+    "name": "Signal # 067847",
+    "date": "2026-10-12",
+    "startTime": "02:45",
+    "endTime": "03:12",
+    "amount": "$48",
+    "multiplier": "1.75",
+    "target": "WinCrafter",
+    "note": "Place the bet in between start and end time.",
+    "createdAt": "2026-10-11T20:50:52.226Z",
+    "id": "sig_1791751852229_ibwcd9"
+  },
+  {
+    "type": "win",
     "name": "Signal # 065482",
     "date": "2026-10-11",
     "startTime": "20:44",
