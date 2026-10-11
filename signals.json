@@ -11,18 +11,5 @@
     "note": "Use on Time",
     "createdAt": "2026-10-10T20:50:45.527Z",
     "id": "sig_1791665421046_mjnqm6"
-  },
-  {
-    "type": "win",
-    "name": "Signal # 02928431",
-    "date": "2026-10-10",
-    "startTime": "18:45",
-    "endTime": "19:10",
-    "amount": "$34",
-    "multiplier": "1.75",
-    "target": "WinCrafter",
-    "note": "Use it on time",
-    "createdAt": "2026-10-10T18:34:20.552Z",
-    "id": "sig_1791584735765_8zfec3"
   }
 ]
