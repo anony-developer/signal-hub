@@ -1,6 +1,19 @@
 [
   {
     "type": "win",
+    "name": "Signal # 026288111",
+    "date": "2026-10-11",
+    "startTime": "07:45",
+    "endTime": "08:12",
+    "amount": "$72",
+    "multiplier": "1.87",
+    "target": "WinCrafter",
+    "note": "Place you bet on time to eliminate lose.",
+    "createdAt": "2026-10-11T02:21:46.192Z",
+    "id": "sig_1791685306198_3qtebm"
+  },
+  {
+    "type": "win",
     "name": "Signal # 02792916",
     "date": "2026-10-11",
     "startTime": "02:35",
