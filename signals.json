@@ -37,18 +37,5 @@
     "note": "Place you bet on time to eliminate lose.",
     "createdAt": "2026-10-11T02:21:46.192Z",
     "id": "sig_1791685306198_3qtebm"
-  },
-  {
-    "type": "win",
-    "name": "Signal # 02792916",
-    "date": "2026-10-11",
-    "startTime": "02:35",
-    "endTime": "02:55",
-    "amount": "$32",
-    "multiplier": "1.65",
-    "target": "WinCrafter",
-    "note": "Use on Time",
-    "createdAt": "2026-10-10T20:50:45.527Z",
-    "id": "sig_1791665421046_mjnqm6"
   }
 ]
