@@ -1,6 +1,19 @@
 [
   {
     "type": "win",
+    "name": "Signal # 0342334",
+    "date": "2026-10-13",
+    "startTime": "10:44",
+    "endTime": "11:14",
+    "amount": "$45",
+    "multiplier": "1.90x",
+    "target": "WinCrafter",
+    "note": "Play Within the Time",
+    "createdAt": "2026-10-13T05:42:08.243Z",
+    "id": "sig_1791870128244_0cru2k"
+  },
+  {
+    "type": "win",
     "name": "Signal # 067847",
     "date": "2026-10-12",
     "startTime": "07:48",
