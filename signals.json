@@ -11,18 +11,5 @@
     "note": "Play Within the Time",
     "createdAt": "2026-10-13T05:42:56.202Z",
     "id": "sig_1791870128244_0cru2k"
-  },
-  {
-    "type": "win",
-    "name": "Signal # 067847",
-    "date": "2026-10-12",
-    "startTime": "07:48",
-    "endTime": "08:22",
-    "amount": "$48",
-    "multiplier": "1.75",
-    "target": "WinCrafter",
-    "note": "Place the bet in between start and end time.",
-    "createdAt": "2026-10-12T00:27:35.507Z",
-    "id": "sig_1791751852229_ibwcd9"
   }
 ]
