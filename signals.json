@@ -11,18 +11,5 @@
     "note": "Place the bet in between start and end time.",
     "createdAt": "2026-10-12T00:27:35.507Z",
     "id": "sig_1791751852229_ibwcd9"
-  },
-  {
-    "type": "win",
-    "name": "Signal # 065482",
-    "date": "2026-10-11",
-    "startTime": "20:44",
-    "endTime": "21:08",
-    "amount": "54",
-    "multiplier": "2.10×",
-    "target": "WinCrafter",
-    "note": "Bet on Time to get profit",
-    "createdAt": "2026-10-11T13:35:05.579Z",
-    "id": "sig_1791722845951_giml22"
   }
 ]
