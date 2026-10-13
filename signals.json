@@ -1,6 +1,19 @@
 [
   {
     "type": "win",
+    "name": "Signal # 029234",
+    "date": "2026-10-13",
+    "startTime": "18:50",
+    "endTime": "19:22",
+    "amount": "25",
+    "multiplier": "2.5x",
+    "target": "Aviator",
+    "note": "Use within the time",
+    "createdAt": "2026-10-13T13:53:01.487Z",
+    "id": "sig_1791899581487_31aprh"
+  },
+  {
+    "type": "win",
     "name": "Signal # 0342334",
     "date": "2026-10-13",
     "startTime": "10:42",
