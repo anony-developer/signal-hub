@@ -1,1 +1,15 @@
-[]
+[
+  {
+    "type": "win",
+    "name": "Signal # 02923332",
+    "date": "2026-10-19",
+    "startTime": "15:47",
+    "endTime": "16:12",
+    "amount": "$24",
+    "multiplier": "2.15x",
+    "target": "WinCrafter",
+    "note": "",
+    "createdAt": "2026-10-19T10:16:05.051Z",
+    "id": "sig_1792404965052_wjj6f9"
+  }
+]
