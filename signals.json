@@ -1,1 +1,15 @@
-[]
+[
+  {
+    "type": "win",
+    "name": "Signal # 029234",
+    "date": "2026-11-23",
+    "startTime": "20:30",
+    "endTime": "21:05",
+    "amount": "$25",
+    "multiplier": "2.25x",
+    "target": "Aviator",
+    "note": "Use signal on time.",
+    "createdAt": "2026-11-23T14:21:22.118Z",
+    "id": "sig_1795443682118_grv9f7"
+  }
+]
